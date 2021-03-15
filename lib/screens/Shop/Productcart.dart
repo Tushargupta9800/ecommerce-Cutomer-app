@@ -1,0 +1,445 @@
+import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/variables/languageCode.dart';
+import 'package:customeremall/settingsAndVariables/variables.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class CartPage extends StatefulWidget {
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
+  Widget build(BuildContext context) {
+
+    ScreenWidth = MediaQuery.of(context).size.width;
+    ScreenHeight = MediaQuery.of(context).size.height;
+
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          height: ScreenHeight,
+          width: ScreenWidth,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+
+                  Container(
+                    width: ScreenWidth,
+                    height: 40,
+                    child: Row(
+                      children: [
+                        IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){}),
+                        SizedBox(width: 100,),
+                        Padding(
+                          padding: const EdgeInsets.only(top:13.0),
+                          child: Column(
+                            children: [
+                              Text('Your Cart', style: TextStyle(
+                                  color: Colors.black, fontSize: 22,
+                                fontWeight: FontWeight.bold
+                              ),),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: ScreenHeight * 0.021,),
+
+                  Container(
+                      height: ScreenHeight/2,
+                      width: ScreenWidth,
+                      child: ListView.separated(
+                        physics: BouncingScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Material(
+                            shadowColor: Colors.grey,
+                            elevation: 2,
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              width: ScreenWidth,
+                              padding: EdgeInsets.symmetric(vertical: 5.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5),
+                                    height: 55,
+                                    width: 55,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage('assets/images/background/picture.png'),
+                                            fit: BoxFit.fill
+                                        )
+                                    ),
+                                  ),
+
+                                  Container(
+                                    padding: EdgeInsets.only(top: 15),
+                                    child: Column(
+                                      children: [
+                                        Text('This is adidas shoes', style: TextStyle(
+                                          color: Colors.black, fontSize: 18,
+                                        ),),
+                                        SizedBox(height: 10,),
+                                        Padding(
+                                          padding: const EdgeInsets.only(right:55.0),
+                                          child: Text('Price: \$100',
+                                            style: TextStyle(
+                                              color: Colors.black, fontSize: 18,
+                                            ),),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  GestureDetector(
+                                    onTap: (){
+
+                                    },
+                                    child: Icon(Icons.delete),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          );
+
+
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return SizedBox(
+                            height: 10,
+                          );
+                        },
+                      )
+                  ),
+
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    height: ScreenHeight/2 - 80,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+
+                          // GestureDetector(
+                          //   onTap: (){
+                          //     dialogForCoupon();
+                          //   },
+                          //   child: Container(
+                          //     margin: EdgeInsets.only(top: 15),
+                          //       padding: EdgeInsets.symmetric(vertical: 5),
+                          //       decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.circular(20),
+                          //         color: Colors.white,
+                          //
+                          //       ),
+                          //       child: Center(
+                          //         child: Text('Have Coupon Code?', style: TextStyle(
+                          //           color: Colors.grey, fontSize: 18,
+                          //         ),),
+                          //       )
+                          //
+                          //   ),
+                          // ),
+
+                          SizedBox(height: 20,),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Subtotal', style: TextStyle(
+                                color: Colors.grey, fontSize: 18,
+                              ),),
+                              Text('SR 100', style: TextStyle(
+                                color: Colors.grey, fontSize: 18,
+                              ),)
+                            ],
+                          ),
+                          SizedBox(height: 8,),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Delivery fee', style: TextStyle(
+                                color: Colors.grey, fontSize: 18,
+                              ),),
+                              Text('SR 100', style: TextStyle(
+                                color: Colors.grey, fontSize: 18,
+                              ),)
+                            ],
+                          ),
+                          SizedBox(height: 8,),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Tax(15%)', style: TextStyle(
+                                color: Colors.grey, fontSize: 18,
+                              ),),
+                              Text('SR 100', style: TextStyle(
+                                color: Colors.grey, fontSize: 18,
+                              ),)
+                            ],
+                          ),
+
+                          SizedBox(height: 10,),
+
+                          GestureDetector(
+                            onTap: (){
+                              setState(() {});
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              height: 60,
+                              width: ScreenWidth,
+                              decoration: BoxDecoration(
+                                  color: DarkBlue,
+                                  borderRadius: BorderRadius.circular(15)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Checkout",style: TextStyle(color: Colors.white,
+                                      fontWeight: FontWeight.bold, fontSize: 20),textAlign: TextAlign.center,),
+
+                                  Text("SR 100",style: TextStyle(color: Colors.white,
+                                      fontWeight: FontWeight.bold, fontSize: 20),textAlign: TextAlign.center,),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 60,),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+
+              Positioned(
+                bottom: 10,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+
+                  children: [
+
+                    Container(
+                        margin: EdgeInsets.symmetric(horizontal: 5),
+                        width: ScreenWidth,
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+
+
+                            Text('By ordering, you agree to our ', style: TextStyle(
+                              color: Colors.black, fontSize: 16,
+                            ),),
+                            Column(
+                              children: [
+                                GestureDetector(
+                                  onTap:(){
+                                    dialogForTerms();
+                                  },
+                                  child: Text('Terms & Conditions', style: TextStyle(
+                                    color: Colors.black, fontSize: 16,
+                                  ),),
+                                ),
+                                Container(
+                                  width: 140,
+                                  height: 2,
+                                  color: DarkBlue,
+                                )
+                              ],
+                            )
+                          ],
+                        )
+
+                    ),
+                  ],
+                ),
+              ),
+
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // dialogForCoupon(){
+  //
+  //   return showDialog(context: context, builder: (context){
+  //
+  //     return Dialog(
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(20.0),
+  //         ),
+  //         child:  Container(
+  //           height: 220,
+  //           width: double.infinity,
+  //           decoration: BoxDecoration(
+  //               borderRadius: BorderRadius.circular(20),
+  //               color: Colors.white
+  //           ),
+  //           child: Column(
+  //             children: [
+  //               Padding(
+  //                 padding: const EdgeInsets.symmetric(horizontal:20.0),
+  //                 child: Row(
+  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                   children: [
+  //                     Text('Coupon Code', style: TextStyle(
+  //                         color: Colors.black, fontSize: 18
+  //                     ),),
+  //                     IconButton(icon: Icon(Icons.cancel, color: Colors.grey,), onPressed: (){
+  //                       Navigator.of(context).pop();
+  //                     })
+  //                   ],
+  //                 ),
+  //               ),
+  //
+  //               SizedBox(height: 20,),
+  //
+  //               Padding(
+  //                 padding: const EdgeInsets.symmetric(horizontal:20.0),
+  //                 child: TextFormField(
+  //                   maxLines: 1,
+  //                   decoration: InputDecoration(
+  //                     hintText: 'Enter here',
+  //                     border: OutlineInputBorder(
+  //                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ),
+  //               SizedBox(height: 20,),
+  //
+  //               Padding(
+  //                   padding: const EdgeInsets.symmetric(horizontal:20.0),
+  //                   child: Container(
+  //                     height: 50,
+  //                     width: double.infinity,
+  //                     decoration: BoxDecoration(
+  //                       color: DarkBlue,
+  //                       borderRadius: BorderRadius.circular(10),
+  //                     ),
+  //                     child: Center(
+  //                       child: Text('Add', style: TextStyle(
+  //                           color: Colors.white, fontSize: 18
+  //                       )),
+  //                     ),
+  //                   )
+  //               ),
+  //
+  //
+  //             ],
+  //           ),
+  //         )
+  //
+  //     );
+  //   });
+  // }
+
+
+  dialogForTerms(){
+
+    return showDialog(context: context, builder: (context){
+
+      return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child:  Container(
+              height: 700,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white
+              ),
+              child: Stack(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    height: 150,
+                    width: double.infinity/2,
+                    decoration: BoxDecoration(
+                        color: DarkBlue,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/background/picture.png'),
+                            fit: BoxFit.cover
+                        )
+                    ),
+                  ),
+
+                  Positioned(
+                      top: 90,
+                      left: 110,
+                      child: Container(
+                        height: 140,
+                        width: 210,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top:15.0),
+                              child: Text('Terms of service', style: TextStyle(
+                                  color: Colors.black, fontWeight: FontWeight.bold
+                              ),),
+                            ),
+                            SizedBox(height: 10,),
+
+                            Text('Please read with \nunderstanding before using \nour services', style: TextStyle(
+                              color: Colors.black,
+                            ),)
+                          ],
+                        ),
+                      )),
+
+
+                  Positioned(
+                      top: 210,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        color: Colors.white,
+                        height: 200,
+                        width:500,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Hello hello hello', style: TextStyle(
+                                color: Colors.black
+                            ),)
+                          ],
+                        ),
+                      ))
+
+                ],
+              )
+          )
+
+      );
+    });
+  }
+
+
+}
