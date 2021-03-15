@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/sharedpreferences/sharedpreferences.dart';
 import 'package:customeremall/settingsAndVariables/routers/routecodes.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -14,6 +15,8 @@ class _LogoutPageState extends State<LogoutPage> {
 
   @override
   void initState() {
+    MyCart.clear();
+    writeCart();
     SetStringFromSharedPref("Email", "@#");
     SetStringFromSharedPref("Password", "@#");
     Timer(Duration(seconds: SplashTimer), () {

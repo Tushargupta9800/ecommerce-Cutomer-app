@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:customeremall/api/productCategories/categories.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/routers/routecodes.dart';
@@ -27,6 +28,8 @@ class _HomePageState extends State<HomePage> {
   bool loading = false;
 
   void Shuffle(){
+
+    readCart();
 
     ListOfInt..shuffle();
     NewProductListOfInt.addAll(ListOfInt);

@@ -1,5 +1,6 @@
 import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,6 +29,8 @@ class _CartPageState extends State<CartPage> {
       tax = 0.15*SubTotal;
       if(SubTotal == 0.00){DeliveryFee = 0.00;}
       Total = SubTotal + DeliveryFee + tax;
+      tax = double.parse(tax.toStringAsFixed(2));
+      Total = double.parse(Total.toStringAsFixed(2));
     });
   }
 
@@ -121,22 +124,27 @@ class _CartPageState extends State<CartPage> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(MyCart[index].Name, style: TextStyle(
-                                              color: Colors.black, fontSize: 18,
+                                              color: Black, fontSize: 18, fontWeight: FontWeight.bold
                                             ),),
                                             SizedBox(height: 10,),
                                             Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Text('SR: ' +
-                                                    MyCart[index].Quantity + "*" + MyCart[index].Price +
-                                                  " = " + (double.parse(MyCart[index].Quantity)*double.parse(MyCart[index].Price)).toString(),
-                                                  style: TextStyle(
-                                                    color: Colors.black, fontSize: 18,
-                                                  ),),
-                                                // Text(Translate(context, QuantityCode) + MyCart[index].Price,
+                                                // Text('SR: ' +
+                                                //     MyCart[index].Quantity + "*" + MyCart[index].Price +
+                                                //   " = " + (double.parse(MyCart[index].Quantity)*double.parse(MyCart[index].Price)).toString(),
                                                 //   style: TextStyle(
                                                 //     color: Colors.black, fontSize: 18,
                                                 //   ),),
+                                                Text('SR ' + (double.parse(MyCart[index].Quantity)*double.parse(MyCart[index].Price)).toString(),
+                                                  style: TextStyle(
+                                                    color: DarkBlue, fontSize: 18, fontWeight: FontWeight.bold
+                                                  ),),
+                                                SizedBox(height: 4,),
+                                                Text(Translate(context, QuantityCode) + ": " + MyCart[index].Quantity,
+                                                  style: TextStyle(
+                                                    color: Black, fontSize: 18,
+                                                  ),),
                                                 // Row(
                                                 //   children: [
                                                 //     Text("Color: ",
@@ -165,7 +173,9 @@ class _CartPageState extends State<CartPage> {
                                   GestureDetector(
                                     onTap: (){
                                       MyCart.removeAt(index);
-                                      CalculatePrice();
+                                      writeCart().then((value){
+                                        CalculatePrice();
+                                      });
                                     },
                                     child: Icon(Icons.delete),
                                   ),
@@ -423,7 +433,6 @@ class _CartPageState extends State<CartPage> {
           ),
           child:  Container(
               height: 700,
-              width: double.infinity,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white
@@ -433,7 +442,6 @@ class _CartPageState extends State<CartPage> {
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     height: 150,
-                    width: double.infinity/2,
                     decoration: BoxDecoration(
                         color: DarkBlue,
                         image: DecorationImage(
@@ -448,22 +456,20 @@ class _CartPageState extends State<CartPage> {
                       left: 110,
                       child: Container(
                         height: 140,
-                        width: 210,
+                        width: ScreenWidth - 180,
+                        padding: EdgeInsets.symmetric(horizontal: 20),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top:15.0),
-                              child: Text(Translate(context, TermsOfServiceCode), style: TextStyle(
-                                  color: Colors.black, fontWeight: FontWeight.bold
-                              ),),
-                            ),
+                            Text(Translate(context, TermsOfServiceCode), style: TextStyle(
+                                color: Colors.black, fontWeight: FontWeight.bold
+                            ),),
                             SizedBox(height: 10,),
 
-                            Text(Translate(context, FullTermsCode), style: TextStyle(
+                            Text(Translate(context, PleaseReadCode), style: TextStyle(
                               color: Colors.black,
                             ),)
                           ],
@@ -481,7 +487,7 @@ class _CartPageState extends State<CartPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Hello hello hello', style: TextStyle(
+                            Text(Translate(context, FullTermsCode), style: TextStyle(
                                 color: Colors.black
                             ),)
                           ],

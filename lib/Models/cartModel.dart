@@ -15,4 +15,13 @@ class CartModel{
     image = MemoryImage(Uint8List.fromList(Imagelist));
   }
 
+  Map<String, String> toJson() => {
+    "Name": Name,
+    "Price": Price,
+    "Id": Id,
+    "Quantity": Quantity,
+    "Color": Color,
+    "Imagelist": Imagelist.toString()
+};
+
 }

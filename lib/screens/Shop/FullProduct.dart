@@ -1,5 +1,6 @@
 import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/settings.dart';
@@ -422,7 +423,9 @@ class _FullProductState extends State<FullProduct> with TickerProviderStateMixin
                             ThisToCart.Imagelist.addAll(HeroProduct.ProductPic);
                             ThisToCart.getImage();
                             MyCart.add(ThisToCart);
-                            ShowToast(AddedToCartCode, context);
+                            writeCart().then((value){
+                              ShowToast(Translate(context, AddedToCartCode), context);
+                            });
                           });
                         },
                         child: Container(
