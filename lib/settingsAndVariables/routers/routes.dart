@@ -1,4 +1,5 @@
 import 'package:customeremall/screens/HomePage/DrawerPages/Language.dart';
+import 'package:customeremall/screens/HomePage/DrawerPages/LogoutPage.dart';
 import 'package:customeremall/screens/HomePage/HomePage.dart';
 import 'package:customeremall/screens/Shop/CategoryPage.dart';
 import 'package:customeremall/screens/Shop/FullProduct.dart';
@@ -18,4 +19,5 @@ var routes = <String,WidgetBuilder>{
   CategoryPageRouteCode: (BuildContext context) => CategoryPage(),
   LanguageRouteCode: (BuildContext context) => Language(),
   FullProductRouteCode: (BuildContext context) => FullProduct(),
+  LogoutRouteCode: (BuildContext context) => LogoutPage(),
 };

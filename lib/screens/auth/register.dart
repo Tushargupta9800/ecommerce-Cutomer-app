@@ -238,7 +238,10 @@ class _RegisterState extends State<Register> {
                               Customer.Password = PasswordController.text;
                             });
                             AuthRegister().then((value) {
-                             if(value) ShowToast(Translate(context, SuccessRegisterCode), context);
+                             if(value){
+                               ShowToast(Translate(context, SuccessRegisterCode), context);
+                               Navigator.popAndPushNamed(context, LoginRouteCode);
+                             }
                              else ShowToast(Translate(context, ErrorRegisterCode), context);
                             });
                           }

@@ -4,6 +4,7 @@ import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/screens/Shop/SubCategoryPage.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
+import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -20,7 +21,7 @@ Future<List<productModel>> GetProductsByCategories(String category, String SubCa
       "Access-Control-Allow-Origin": "*",
     },
     body: jsonEncode(<String, dynamic>{
-      "city": "new",
+      "city": Customer.Address,
       "category": category,
       "subcategory": SubCategory
     }),

@@ -1,5 +1,6 @@
 import 'package:customeremall/localization/code/app_localizations.dart';
 import 'package:customeremall/screens/Shop/Productcart.dart';
+import 'package:customeremall/screens/Splashscreen/splashscreen.dart';
 import 'package:customeremall/settingsAndVariables/routers/routes.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/material.dart';
@@ -84,9 +85,9 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: _locale.countryCode == "SA"? "mainTheme": "Regular",
       ),
-      // home: SplashScreen(),
+      home: SplashScreen(),
       // home: HomePage(),
-      home: CartPage(),
+      // home: CartPage(),
       routes: routes,
     );
   }

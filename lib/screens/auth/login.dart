@@ -1,5 +1,6 @@
 import 'package:customeremall/api/Auth/auth.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/sharedpreferences/sharedpreferences.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/routers/routecodes.dart';
@@ -150,7 +151,13 @@ class _LoginState extends State<Login> {
                                 Customer.Password = PasswordController.text;
                               });
                               AuthLogin().then((value) {
-                                if(value) ShowToast(Translate(context, WelcomeCode), context);
+                                if(value){
+                                  ShowToast(Translate(context, WelcomeCode), context);
+                                  incrementStartup();
+                                  SetStringFromSharedPref("Email", Customer.Email);
+                                  SetStringFromSharedPref("Password", Customer.Password);
+                                  Navigator.popAndPushNamed(context, HomePageRouteCode);
+                                }
                                 else ShowToast(Translate(context, ErrorLoginCode), context);
                               });
                             }
@@ -186,7 +193,7 @@ class _LoginState extends State<Login> {
                 ],
               ),
 
-              (loading) ?? Container(),
+              (loading)?Container():SizedBox(height: 0,),
 
             ],
           ),
