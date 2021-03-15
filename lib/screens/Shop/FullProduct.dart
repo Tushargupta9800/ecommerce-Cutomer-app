@@ -1,5 +1,7 @@
+import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
+import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/settings.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
@@ -410,7 +412,18 @@ class _FullProductState extends State<FullProduct> with TickerProviderStateMixin
                       left: 10,
                       child: GestureDetector(
                         onTap: (){
-                          setState(() {});
+                          setState(() {
+                            CartModel ThisToCart = CartModel();
+                            ThisToCart.Name = HeroProduct.ProductName;
+                            ThisToCart.Price = HeroProduct.ProductPrice;
+                            ThisToCart.Id = HeroProduct.ProductId;
+                            ThisToCart.Quantity = numberController.text;
+                            ThisToCart.Color = HeroProduct.ProductColor[selectedIndex];
+                            ThisToCart.Imagelist.addAll(HeroProduct.ProductPic);
+                            ThisToCart.getImage();
+                            MyCart.add(ThisToCart);
+                            ShowToast(AddedToCartCode, context);
+                          });
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 20),

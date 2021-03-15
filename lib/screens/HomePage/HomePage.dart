@@ -252,7 +252,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: (){}),
+              onPressed: (){
+                Navigator.pushNamed(context, CartPageRouteCode);
+              }),
           IconButton(icon: Icon(Icons.notification_important_rounded),
               onPressed: (){})
         ],

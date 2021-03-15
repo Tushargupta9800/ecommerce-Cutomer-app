@@ -3,6 +3,7 @@ import 'package:customeremall/screens/HomePage/DrawerPages/LogoutPage.dart';
 import 'package:customeremall/screens/HomePage/HomePage.dart';
 import 'package:customeremall/screens/Shop/CategoryPage.dart';
 import 'package:customeremall/screens/Shop/FullProduct.dart';
+import 'package:customeremall/screens/Shop/Productcart.dart';
 import 'package:customeremall/screens/Splashscreen/getstarted.dart';
 import 'package:customeremall/screens/Splashscreen/splashscreen.dart';
 import 'package:customeremall/screens/auth/login.dart';
@@ -20,4 +21,5 @@ var routes = <String,WidgetBuilder>{
   LanguageRouteCode: (BuildContext context) => Language(),
   FullProductRouteCode: (BuildContext context) => FullProduct(),
   LogoutRouteCode: (BuildContext context) => LogoutPage(),
+  CartPageRouteCode: (BuildContext context) => CartPage(),
 };

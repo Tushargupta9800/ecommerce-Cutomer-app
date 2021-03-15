@@ -58,5 +58,7 @@
     "AgreeTerms": "By Ordering, you agree to our",
     "TermsOfService": "Terms of service",
     "PleaseRead": "Please read with understanding before using our service",
-    "FullTerms": "provide the terms in english plus arabic"
+    "FullTerms": "provide the terms in english plus arabic",
+    "Tax": "Tax(15%)",
+    "AddedToCart": "Added To Cart"
 }

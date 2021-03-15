@@ -50,8 +50,6 @@
     "AvailableColors": "الألوان المتاحة",
     "AvailableQuantity": "الكمية المتاحة ",
     "AddToCart": "اضافة الى السلة",
-    "YourCart": "Your Cart",
-    "Price": "Price",
     "YourCart": "السلة",
     "Price": "السعر",
     "SubTotal": "المجموع",
@@ -60,5 +58,7 @@
     "AgreeTerms": "من خلال الطلب ، فإنك توافق على",
     "TermsOfService": "شروط الخدمة ",
     "PleaseRead": "يرجى القرأة فهم قبل استخدام خدماتنا",
-    "FullTerms": "تقديم المصطلحات بلأنجليزية والعربية"
+    "FullTerms": "تقديم المصطلحات بلأنجليزية والعربية",
+    "Tax": "Tax(15%)",
+    "AddedToCart": "Added To Cart"
 }

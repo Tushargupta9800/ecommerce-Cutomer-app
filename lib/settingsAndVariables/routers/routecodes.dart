@@ -7,3 +7,4 @@ String CategoryPageRouteCode = "/home/homepage/category";
 String LanguageRouteCode = "/home/homepage/drawer/language";
 String FullProductRouteCode = "home/homepage/products/fullPoduct";
 String LogoutRouteCode = "/home/homepage/drawer/logout";
+String CartPageRouteCode = "/home/homepage/cart";

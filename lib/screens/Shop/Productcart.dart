@@ -1,3 +1,4 @@
+import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -10,11 +11,34 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+
+  double Total = 0.00;
+  double SubTotal = 0.00;
+  double DeliveryFee = 25.00;
+  double tax = 0.00;
+
+  CalculatePrice(){
+    setState(() {
+      Total = 0.00;
+      SubTotal = 0.00;
+      tax = 0.00;
+      for(CartModel cart in MyCart){
+        SubTotal += double.parse(cart.Quantity)*double.parse(cart.Price);
+      }
+      tax = 0.15*SubTotal;
+      if(SubTotal == 0.00){DeliveryFee = 0.00;}
+      Total = SubTotal + DeliveryFee + tax;
+    });
+  }
+
+  @override
+  void initState() {
+    CalculatePrice();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    ScreenWidth = MediaQuery.of(context).size.width;
-    ScreenHeight = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
@@ -31,13 +55,15 @@ class _CartPageState extends State<CartPage> {
                     height: 40,
                     child: Row(
                       children: [
-                        IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){}),
+                        IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){
+                          Navigator.of(context).pop();
+                        }),
                         SizedBox(width: 100,),
                         Padding(
                           padding: const EdgeInsets.only(top:13.0),
                           child: Column(
                             children: [
-                              Text('Your Cart', style: TextStyle(
+                              Text(Translate(context, YourCartCode), style: TextStyle(
                                   color: Colors.black, fontSize: 22,
                                 fontWeight: FontWeight.bold
                               ),),
@@ -57,7 +83,7 @@ class _CartPageState extends State<CartPage> {
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        itemCount: 10,
+                        itemCount: MyCart.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Material(
                             shadowColor: Colors.grey,
@@ -73,42 +99,73 @@ class _CartPageState extends State<CartPage> {
 
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.only(left: 5),
-                                    height: 55,
-                                    width: 55,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage('assets/images/background/picture.png'),
-                                            fit: BoxFit.fill
-                                        )
-                                    ),
-                                  ),
-
-                                  Container(
-                                    padding: EdgeInsets.only(top: 15),
-                                    child: Column(
-                                      children: [
-                                        Text('This is adidas shoes', style: TextStyle(
-                                          color: Colors.black, fontSize: 18,
-                                        ),),
-                                        SizedBox(height: 10,),
-                                        Padding(
-                                          padding: const EdgeInsets.only(right:55.0),
-                                          child: Text('Price: \$100',
-                                            style: TextStyle(
+                                  Row(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(left: 5),
+                                        height: 55,
+                                        width: 55,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: MyCart[index].image,
+                                                fit: BoxFit.fill
+                                            )
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(left: 10,right: 10),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(MyCart[index].Name, style: TextStyle(
                                               color: Colors.black, fontSize: 18,
                                             ),),
+                                            SizedBox(height: 10,),
+                                            Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                Text('SR: ' +
+                                                    MyCart[index].Quantity + "*" + MyCart[index].Price +
+                                                  " = " + (double.parse(MyCart[index].Quantity)*double.parse(MyCart[index].Price)).toString(),
+                                                  style: TextStyle(
+                                                    color: Colors.black, fontSize: 18,
+                                                  ),),
+                                                // Text(Translate(context, QuantityCode) + MyCart[index].Price,
+                                                //   style: TextStyle(
+                                                //     color: Colors.black, fontSize: 18,
+                                                //   ),),
+                                                // Row(
+                                                //   children: [
+                                                //     Text("Color: ",
+                                                //       style: TextStyle(
+                                                //         color: Colors.black, fontSize: 18,
+                                                //       ),),
+                                                //     Container(
+                                                //       height: 15,
+                                                //       width: 15,
+                                                //       margin: EdgeInsets.only(right: 10,top: 10),
+                                                //       decoration : AddProductDecoration(
+                                                //           HexColor(MyCart[index].Color),
+                                                //           500, DarkBlue
+                                                //       ),
+                                                //     ),
+                                                //   ],
+                                                // ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
 
                                   GestureDetector(
                                     onTap: (){
-
+                                      MyCart.removeAt(index);
+                                      CalculatePrice();
                                     },
                                     child: Icon(Icons.delete),
                                   ),
@@ -162,10 +219,10 @@ class _CartPageState extends State<CartPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Subtotal', style: TextStyle(
+                              Text(Translate(context, SubTotalCode), style: TextStyle(
                                 color: Colors.grey, fontSize: 18,
                               ),),
-                              Text('SR 100', style: TextStyle(
+                              Text(SubTotal.toString(), style: TextStyle(
                                 color: Colors.grey, fontSize: 18,
                               ),)
                             ],
@@ -175,10 +232,10 @@ class _CartPageState extends State<CartPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Delivery fee', style: TextStyle(
+                              Text(Translate(context, DeliveryFeeCode), style: TextStyle(
                                 color: Colors.grey, fontSize: 18,
                               ),),
-                              Text('SR 100', style: TextStyle(
+                              Text(DeliveryFee.toString(), style: TextStyle(
                                 color: Colors.grey, fontSize: 18,
                               ),)
                             ],
@@ -188,10 +245,10 @@ class _CartPageState extends State<CartPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Tax(15%)', style: TextStyle(
+                              Text(Translate(context, TaxCode), style: TextStyle(
                                 color: Colors.grey, fontSize: 18,
                               ),),
-                              Text('SR 100', style: TextStyle(
+                              Text(tax.toString(), style: TextStyle(
                                 color: Colors.grey, fontSize: 18,
                               ),)
                             ],
@@ -214,10 +271,10 @@ class _CartPageState extends State<CartPage> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Checkout",style: TextStyle(color: Colors.white,
+                                  Text(Translate(context, CheckoutCode),style: TextStyle(color: Colors.white,
                                       fontWeight: FontWeight.bold, fontSize: 20),textAlign: TextAlign.center,),
 
-                                  Text("SR 100",style: TextStyle(color: Colors.white,
+                                  Text(Total.toString(),style: TextStyle(color: Colors.white,
                                       fontWeight: FontWeight.bold, fontSize: 20),textAlign: TextAlign.center,),
                                 ],
                               ),
@@ -245,9 +302,7 @@ class _CartPageState extends State<CartPage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-
-
-                            Text('By ordering, you agree to our ', style: TextStyle(
+                            Text(Translate(context, AgreeTermsCode), style: TextStyle(
                               color: Colors.black, fontSize: 16,
                             ),),
                             Column(
@@ -256,7 +311,7 @@ class _CartPageState extends State<CartPage> {
                                   onTap:(){
                                     dialogForTerms();
                                   },
-                                  child: Text('Terms & Conditions', style: TextStyle(
+                                  child: Text(Translate(context, TACCode), style: TextStyle(
                                     color: Colors.black, fontSize: 16,
                                   ),),
                                 ),
@@ -402,13 +457,13 @@ class _CartPageState extends State<CartPage> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(top:15.0),
-                              child: Text('Terms of service', style: TextStyle(
+                              child: Text(Translate(context, TermsOfServiceCode), style: TextStyle(
                                   color: Colors.black, fontWeight: FontWeight.bold
                               ),),
                             ),
                             SizedBox(height: 10,),
 
-                            Text('Please read with \nunderstanding before using \nour services', style: TextStyle(
+                            Text(Translate(context, FullTermsCode), style: TextStyle(
                               color: Colors.black,
                             ),)
                           ],

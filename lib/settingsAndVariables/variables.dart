@@ -1,3 +1,4 @@
+import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/Models/productModel.dart';
 import 'package:customeremall/Models/userModel.dart';
 import 'package:flutter/material.dart';
@@ -39,3 +40,4 @@ User Customer = User();
 String HeroTag;
 int HeroIndex;
 productModel HeroProduct = productModel();
+List<CartModel> MyCart = [];
