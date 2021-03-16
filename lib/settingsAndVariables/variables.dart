@@ -41,3 +41,6 @@ String HeroTag;
 int HeroIndex;
 productModel HeroProduct = productModel();
 List<CartModel> MyCart = [];
+
+String Whatsappnumber = "+966599018558";
+String Whatsappmsg = "Sending hi from Customer Care from app";

@@ -9,7 +9,9 @@ import 'package:customeremall/settingsAndVariables/settings.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -476,7 +478,7 @@ class _HomePageState extends State<HomePage> {
             height: 200,
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30)),
               color: Colors.white,
             ),
             child: Column(
@@ -494,18 +496,24 @@ class _HomePageState extends State<HomePage> {
                       onTap: (){
                         Navigator.of(context).pop();
                       },
-                      child: Icon(Icons.clear),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Icon(Icons.clear)
+                      ),
                     ),
                   ],
                 ),
                 GestureDetector(
                   onTap: (){
+                    String url = "tel:" + Whatsappnumber;
+                    launch(url);
                   },
                   child: Row(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
-                        width: 40,
-                        height: 40,
+                        width: 30,
+                        height: 30,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/images/DrawerIcons/subdrawerIcons/call.png'),
@@ -520,14 +528,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
-
+                  onTap: () async {
+                    String url = "https://wa.me/" + Whatsappnumber + "?text=" + Whatsappmsg;
+                    launch(url);
                   },
                   child: Row(
                     children: [
                       Container(
-                        width: 40,
-                        height: 40,
+                        width: 30,
+                        height: 30,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/images/DrawerIcons/subdrawerIcons/whatsapp.png'),
