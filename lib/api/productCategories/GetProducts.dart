@@ -2,7 +2,6 @@ import 'package:customeremall/Models/productModel.dart';
 import 'package:customeremall/api/secrets/secrets.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
-import 'package:customeremall/screens/Shop/SubCategoryPage.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';

@@ -52,7 +52,7 @@ class _CategoryPageState extends State<CategoryPage> with SingleTickerProviderSt
         ),),
       ),
       );
-    };
+    }
 
     return myTabs;
   }

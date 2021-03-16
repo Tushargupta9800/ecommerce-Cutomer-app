@@ -1,5 +1,4 @@
 import 'package:customeremall/localization/code/app_localizations.dart';
-import 'package:customeremall/screens/Shop/Productcart.dart';
 import 'package:customeremall/screens/Splashscreen/splashscreen.dart';
 import 'package:customeremall/settingsAndVariables/routers/routes.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
