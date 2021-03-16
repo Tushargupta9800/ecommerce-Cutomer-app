@@ -298,10 +298,10 @@ class _HomePageState extends State<HomePage> {
                     )
                 ),
 
-                DrawerTile(Translate(context, MyOrdersCode), 'assets/images/DrawerIcons/Orders.png', "something"),
-                DrawerTile(Translate(context, MyAddressCode), 'assets/images/DrawerIcons/Address.png', "something"),
+                DrawerTile(Translate(context, MyOrdersCode), 'assets/images/DrawerIcons/Orders.png', MyOrdersRouteCode),
+                DrawerTile(Translate(context, MyAddressCode), 'assets/images/DrawerIcons/Address.png', MyAddressRouteCode),
                 DrawerTile(Translate(context, LanguageCode), 'assets/images/DrawerIcons/language.png', LanguageRouteCode),
-                DrawerTile(Translate(context, SettingsCode), 'assets/images/DrawerIcons/Settings.png', "something"),
+                DrawerTile(Translate(context, SettingsCode), 'assets/images/DrawerIcons/Settings.png', SettingsRouteCode),
                 GestureDetector(
                   onTap: (){
                     setState(() {
