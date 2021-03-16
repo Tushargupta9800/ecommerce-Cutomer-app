@@ -1,5 +1,6 @@
 import 'package:customeremall/screens/HomePage/DrawerPages/Language.dart';
 import 'package:customeremall/screens/HomePage/DrawerPages/LogoutPage.dart';
+import 'package:customeremall/screens/HomePage/DrawerPages/termsAndconditions.dart';
 import 'package:customeremall/screens/HomePage/HomePage.dart';
 import 'package:customeremall/screens/Shop/CategoryPage.dart';
 import 'package:customeremall/screens/Shop/FullProduct.dart';
@@ -22,4 +23,5 @@ var routes = <String,WidgetBuilder>{
   FullProductRouteCode: (BuildContext context) => FullProduct(),
   LogoutRouteCode: (BuildContext context) => LogoutPage(),
   CartPageRouteCode: (BuildContext context) => CartPage(),
+  TACRouteCode: (BuildContext context) => TermsAndConditions(),
 };

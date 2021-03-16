@@ -303,7 +303,7 @@ class _HomePageState extends State<HomePage> {
               DrawerTile(Translate(context, SettingsCode), 'assets/images/DrawerIcons/Settings.png', "something"),
               DrawerTile(Translate(context, CustomerCareCode), 'assets/images/DrawerIcons/CustomerCare.png', "something"),
               DrawerTile(Translate(context, LogoutCode), 'assets/images/DrawerIcons/logout.png', LogoutRouteCode),
-              DrawerTile(Translate(context, TACCode), 'assets/images/DrawerIcons/TAC.png', "something"),
+              DrawerTile(Translate(context, TACCode), 'assets/images/DrawerIcons/TAC.png', TACRouteCode),
 
             ],
           ),
