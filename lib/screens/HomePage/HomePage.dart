@@ -9,6 +9,7 @@ import 'package:customeremall/settingsAndVariables/settings.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -234,8 +235,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    ScreenHeight = MediaQuery.of(context).size.height;
-    ScreenWidth = MediaQuery.of(context).size.width;
+    YYDialog.init(context);
     ProductImageListNames = [
       Translate(context, AccessoriesCode),
       Translate(context, PantsCode),
@@ -305,6 +305,7 @@ class _HomePageState extends State<HomePage> {
                 GestureDetector(
                   onTap: (){
                     setState(() {
+                      YYNoticeDialog();
                     });
                   },
                   child: ListTile(
@@ -463,4 +464,88 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  YYDialog YYNoticeDialog() {
+    return YYDialog().build()
+      ..gravity = Gravity.bottom
+      ..gravityAnimationEnable = true
+      ..backgroundColor = Colors.transparent
+      ..widget(
+          Container(
+            width: ScreenWidth,
+            height: 200,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Colors.white,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(height: 5,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(width: 1,),
+                    Text("Help And Support",style: TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: H5
+                    ),),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).pop();
+                      },
+                      child: Icon(Icons.clear),
+                    ),
+                  ],
+                ),
+                GestureDetector(
+                  onTap: (){
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/DrawerIcons/subdrawerIcons/call.png'),
+                                fit: BoxFit.fill
+                            )
+                        ),
+                      ),
+                      SizedBox(width: 8,),
+                      Text("Call",style: TextStyle( fontSize: H5
+                      ),),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/DrawerIcons/subdrawerIcons/whatsapp.png'),
+                                fit: BoxFit.fill
+                            )
+                        ),
+                      ),
+                      SizedBox(width: 8,),
+                      Text("Message",style: TextStyle( fontSize: H5
+                      ),),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 5,),
+              ],
+            ),
+      ))
+      ..show();
+  }
+
 }

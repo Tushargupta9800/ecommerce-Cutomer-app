@@ -9,6 +9,7 @@ class TermsAndConditions extends StatefulWidget {
 }
 
 class _TermsAndConditionsState extends State<TermsAndConditions> {
+
   @override
   Widget build(BuildContext context) {
 
