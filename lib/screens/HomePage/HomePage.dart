@@ -246,200 +246,220 @@ class _HomePageState extends State<HomePage> {
       Translate(context, TshirtsCode),
     ];
 
-    return (loading)?Loading():Scaffold(
-      backgroundColor: White,
-      appBar: AppBar(
-        elevation: 0,
+    return (loading)?Loading():SafeArea(
+      child: Scaffold(
         backgroundColor: White,
-        iconTheme: IconThemeData(color: Black,),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: (){
-                Navigator.pushNamed(context, CartPageRouteCode);
-              }),
-          IconButton(icon: Icon(Icons.notification_important_rounded),
-              onPressed: (){})
-        ],
-      ),
-      drawer: Drawer(
-        child: Container(
-          color: White,
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                  decoration: BoxDecoration(
-                      color: White
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/background/picture.png'),
-                                fit: BoxFit.fill
-                            )
-                        ),
-                      ),
-
-                      SizedBox(height: 10,),
-                      Text('User Name', style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 18
-                      ),),
-
-                      Text('KSA, DAMMAM', style: TextStyle(
-                        fontSize: 14, color: DarkBlue,
-                      ),),
-                    ],
-                  )
-              ),
-
-              DrawerTile(Translate(context, MyOrdersCode), 'assets/images/DrawerIcons/Orders.png', "something"),
-              DrawerTile(Translate(context, MyAddressCode), 'assets/images/DrawerIcons/Address.png', "something"),
-              DrawerTile(Translate(context, LanguageCode), 'assets/images/DrawerIcons/language.png', LanguageRouteCode),
-              DrawerTile(Translate(context, SettingsCode), 'assets/images/DrawerIcons/Settings.png', "something"),
-              DrawerTile(Translate(context, CustomerCareCode), 'assets/images/DrawerIcons/CustomerCare.png', "something"),
-              DrawerTile(Translate(context, LogoutCode), 'assets/images/DrawerIcons/logout.png', LogoutRouteCode),
-              DrawerTile(Translate(context, TACCode), 'assets/images/DrawerIcons/TAC.png', TACRouteCode),
-
-            ],
-          ),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: White,
+          iconTheme: IconThemeData(color: Black,),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: (){
+                  Navigator.pushNamed(context, CartPageRouteCode);
+                }),
+            IconButton(icon: Icon(Icons.notification_important_rounded),
+                onPressed: (){})
+          ],
         ),
-      ),
-
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
+        drawer: Drawer(
+          child: Container(
+            color: White,
+            child: ListView(
+              padding: EdgeInsets.zero,
               children: [
+                DrawerHeader(
+                    decoration: BoxDecoration(
+                        color: White
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/images/background/picture.png'),
+                                  fit: BoxFit.fill
+                              )
+                          ),
+                        ),
+
+                        SizedBox(height: 10,),
+                        Text(Customer.Name, style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18
+                        ),),
+
+                        Text(Customer.Address, style: TextStyle(
+                          fontSize: 14, color: DarkBlue,
+                        ),),
+                      ],
+                    )
+                ),
+
+                DrawerTile(Translate(context, MyOrdersCode), 'assets/images/DrawerIcons/Orders.png', "something"),
+                DrawerTile(Translate(context, MyAddressCode), 'assets/images/DrawerIcons/Address.png', "something"),
+                DrawerTile(Translate(context, LanguageCode), 'assets/images/DrawerIcons/language.png', LanguageRouteCode),
+                DrawerTile(Translate(context, SettingsCode), 'assets/images/DrawerIcons/Settings.png', "something"),
                 GestureDetector(
                   onTap: (){
                     setState(() {
-                      shiftToTab = 0;
-                      int number  = random.nextInt(3);
-                      if(number == 0){
-                        CurrentCategoryArabic = "نسا";
-                        CurrentCategoryEnglish = "Women";
-                      }
-                      else if(number == 1){
-                        CurrentCategoryArabic = "رجال";
-                        CurrentCategoryEnglish = "Men";
-                      }
-                      else{
-                        CurrentCategoryArabic = "أطفال";
-                        CurrentCategoryEnglish = "Kids";
-                      }
-                      loading = true;
-                    });
-
-                    AllSubCategoryList.clear();
-                    AllSubCategories().then((value){
-                      setState(() {loading = false;});
-                      shiftToTab = random.nextInt(AllSubCategoryList.length);
-                      if(value) Navigator.pushNamed(context, CategoryPageRouteCode);
-                      else ShowToast(Translate(context, ErrorCode), context);
                     });
                   },
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    height: ScreenHeight * 0.35,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage(ProductImageList[random.nextInt(7)]),
-                          fit: BoxFit.fill,
-                        )
-                    ),
-                    child: Container(
+                  child: ListTile(
+                    title: Text(Translate(context, CustomerCareCode)),
+                    leading: Container(
+                      height: 30,
+                      width: 30,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          gradient: LinearGradient(
-                              begin: Alignment.bottomRight,
-                              colors: [
-                                Black.withOpacity(.8),
-                                Black.withOpacity(.2),
-                              ]
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/DrawerIcons/CustomerCare.png'),
+                              fit: BoxFit.fill
                           )
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-
-                          Container(
-                            padding: EdgeInsets.only(left: 30, bottom: 10, right: 30),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-
-                                Text(Translate(context, NewProductsCode), style: TextStyle(
-                                    color: White, fontSize: 30, fontWeight: FontWeight.bold
-                                ),),
-
-                                SizedBox(height: 10,),
-
-                                Row(
-                                  children: [
-                                    Text(Translate(context, ViewMoreCode), style: TextStyle(
-                                        color: White, fontWeight: FontWeight.w600
-                                    ),),
-                                    SizedBox(width: 5,),
-                                    Icon(Icons.arrow_forward_ios, color: White, size: 15,)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                 ),
+                DrawerTile(Translate(context, LogoutCode), 'assets/images/DrawerIcons/logout.png', LogoutRouteCode),
+                DrawerTile(Translate(context, TACCode), 'assets/images/DrawerIcons/TAC.png', TACRouteCode),
 
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          CategoryTile("نسا", "Women", "assets/images/CategoryIcons/women.png",Translate(context, WomenCode)),
-                          CategoryTile("رجال", "Men", "assets/images/CategoryIcons/men.png",Translate(context, MenCode)),
-                          CategoryTile("أطفال", "Kids", "assets/images/CategoryIcons/girl.png",Translate(context, KidsCode)),
-                        ],
-                      ),
-
-                      SizedBox(height: 25),
-                      SubHeader(Translate(context, NewProductsCode), "رجال", "Men"),
-                      SizedBox(height: ScreenHeight * 0.025,),
-                      SubHeaderCategories(NewProductListOfInt,"رجال", "Men"),
-
-
-                      SizedBox(height: 25,),
-                      SubHeader(Translate(context, MenCode) + " " + Translate(context, CollectionCode), "رجال", "Men"),
-                      SizedBox(height: ScreenHeight * 0.025,),
-                      SubHeaderCategories(MenListOfInt,"رجال", "Men"),
-
-                      SizedBox(height: 25,),
-                      SubHeader(Translate(context, WomenCode) + " " + Translate(context, CollectionCode), "نسا", "Women"),
-                      SizedBox(height: ScreenHeight * 0.025,),
-                      SubHeaderCategories(WomenListOfInt,"نسا", "Women"),
-
-                      SizedBox(height: 25,),
-                      SubHeader(Translate(context, KidsCode) + " " + Translate(context, CollectionCode), "أطفال", "Kids"),
-                      SizedBox(height: ScreenHeight * 0.025,),
-                      SubHeaderCategories(KidsListOfInt,"أطفال", "Kids"),
-
-                    ],
-                  ),
-                ),
               ],
             ),
           ),
-        ],
+        ),
+
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        shiftToTab = 0;
+                        int number  = random.nextInt(3);
+                        if(number == 0){
+                          CurrentCategoryArabic = "نسا";
+                          CurrentCategoryEnglish = "Women";
+                        }
+                        else if(number == 1){
+                          CurrentCategoryArabic = "رجال";
+                          CurrentCategoryEnglish = "Men";
+                        }
+                        else{
+                          CurrentCategoryArabic = "أطفال";
+                          CurrentCategoryEnglish = "Kids";
+                        }
+                        loading = true;
+                      });
+
+                      AllSubCategoryList.clear();
+                      AllSubCategories().then((value){
+                        setState(() {loading = false;});
+                        shiftToTab = random.nextInt(AllSubCategoryList.length);
+                        if(value) Navigator.pushNamed(context, CategoryPageRouteCode);
+                        else ShowToast(Translate(context, ErrorCode), context);
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      height: ScreenHeight * 0.35,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: AssetImage(ProductImageList[random.nextInt(7)]),
+                            fit: BoxFit.fill,
+                          )
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomRight,
+                                colors: [
+                                  Black.withOpacity(.8),
+                                  Black.withOpacity(.2),
+                                ]
+                            )
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+
+                            Container(
+                              padding: EdgeInsets.only(left: 30, bottom: 10, right: 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+                                  Text(Translate(context, NewProductsCode), style: TextStyle(
+                                      color: White, fontSize: 30, fontWeight: FontWeight.bold
+                                  ),),
+
+                                  SizedBox(height: 10,),
+
+                                  Row(
+                                    children: [
+                                      Text(Translate(context, ViewMoreCode), style: TextStyle(
+                                          color: White, fontWeight: FontWeight.w600
+                                      ),),
+                                      SizedBox(width: 5,),
+                                      Icon(Icons.arrow_forward_ios, color: White, size: 15,)
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            CategoryTile("نسا", "Women", "assets/images/CategoryIcons/women.png",Translate(context, WomenCode)),
+                            CategoryTile("رجال", "Men", "assets/images/CategoryIcons/men.png",Translate(context, MenCode)),
+                            CategoryTile("أطفال", "Kids", "assets/images/CategoryIcons/girl.png",Translate(context, KidsCode)),
+                          ],
+                        ),
+
+                        SizedBox(height: 25),
+                        SubHeader(Translate(context, NewProductsCode), "رجال", "Men"),
+                        SizedBox(height: ScreenHeight * 0.025,),
+                        SubHeaderCategories(NewProductListOfInt,"رجال", "Men"),
+
+
+                        SizedBox(height: 25,),
+                        SubHeader(Translate(context, MenCode) + " " + Translate(context, CollectionCode), "رجال", "Men"),
+                        SizedBox(height: ScreenHeight * 0.025,),
+                        SubHeaderCategories(MenListOfInt,"رجال", "Men"),
+
+                        SizedBox(height: 25,),
+                        SubHeader(Translate(context, WomenCode) + " " + Translate(context, CollectionCode), "نسا", "Women"),
+                        SizedBox(height: ScreenHeight * 0.025,),
+                        SubHeaderCategories(WomenListOfInt,"نسا", "Women"),
+
+                        SizedBox(height: 25,),
+                        SubHeader(Translate(context, KidsCode) + " " + Translate(context, CollectionCode), "أطفال", "Kids"),
+                        SizedBox(height: ScreenHeight * 0.025,),
+                        SubHeaderCategories(KidsListOfInt,"أطفال", "Kids"),
+
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

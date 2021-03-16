@@ -9,3 +9,6 @@ String FullProductRouteCode = "home/homepage/products/fullPoduct";
 String LogoutRouteCode = "/home/homepage/drawer/logout";
 String TACRouteCode = "/home/homepage/drawer/TAC";
 String CartPageRouteCode = "/home/homepage/cart";
+String MyOrdersRouteCode = "/home/homepage/drawer/myorders";
+String MyAddressRouteCode = "/home/homepage/drawer/myaddress";
+String SettingsRouteCode = "/home/homepage/drawer/settings";

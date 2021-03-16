@@ -3,12 +3,12 @@ import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/material.dart';
 
-class TermsAndConditions extends StatefulWidget {
+class MyAddress extends StatefulWidget {
   @override
-  _TermsAndConditionsState createState() => _TermsAndConditionsState();
+  _MyAddressState createState() => _MyAddressState();
 }
 
-class _TermsAndConditionsState extends State<TermsAndConditions> {
+class _MyAddressState extends State<MyAddress> {
   @override
   Widget build(BuildContext context) {
 
@@ -18,13 +18,13 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
         centerTitle: true,
         elevation: 0,
         backgroundColor: White,
-        title: Text(Translate(context, TACCode), style: TextStyle(
+        title: Text(Translate(context, MyAddressCode), style: TextStyle(
             color: Colors.black, fontWeight: FontWeight.bold
         ),),
         leading: GestureDetector(
-          onTap: (){
-            Navigator.of(context).pop();
-          },
+            onTap: (){
+              Navigator.of(context).pop();
+            },
             child: Icon(Icons.arrow_back_ios, color: DarkBlue,)
         ),
       ),
