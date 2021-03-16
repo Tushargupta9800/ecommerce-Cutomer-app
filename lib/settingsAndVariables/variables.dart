@@ -1,3 +1,4 @@
+import 'package:customeremall/Models/AddressModel.dart';
 import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/Models/productModel.dart';
 import 'package:customeremall/Models/userModel.dart';
@@ -41,6 +42,7 @@ String HeroTag;
 int HeroIndex;
 productModel HeroProduct = productModel();
 List<CartModel> MyCart = [];
+List<AddressModel> MyAllAddresses = [];
 
 String Whatsappnumber = "+966599018558";
-String Whatsappmsg = "Sending hi from Customer Care from app";
+String Whatsappmsg = "Hello";

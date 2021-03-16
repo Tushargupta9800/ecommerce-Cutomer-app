@@ -9,7 +9,6 @@ import 'package:customeremall/settingsAndVariables/settings.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 

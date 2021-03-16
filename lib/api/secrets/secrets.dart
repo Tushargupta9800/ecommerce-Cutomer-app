@@ -7,3 +7,4 @@ String CategoryUrl = DomainUrl + "/api/get/get/category";
 String SubCategoryUrl = DomainUrl + "/api/get/get/subcategory";
 
 String GetProductsUrl = DomainUrl + "/api/get/customizedquery";
+String BuyProductsUrl = DomainUrl + "/api/takeorder/orders";
