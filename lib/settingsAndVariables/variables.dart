@@ -1,8 +1,8 @@
 import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/Models/productModel.dart';
 import 'package:customeremall/Models/userModel.dart';
+import 'package:customeremall/settingsAndVariables/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 int SplashTimer = 1;
 
@@ -31,7 +31,7 @@ Color Grey = Colors.grey;
 Color LightGrey = Colors.grey[400];
 Color Blue = Colors.blue;
 Color Red = Colors.red;
-Color DarkBlue = HexColor("#18396A");
+Color DarkBlue = HexColor.fromHex("#18396A");
 
 double TextFieldSize = 50;
 

@@ -9,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class FullProduct extends StatefulWidget {
 
@@ -368,7 +367,7 @@ class _FullProductState extends State<FullProduct> with TickerProviderStateMixin
                                                   width: 40,
                                                   margin: EdgeInsets.only(right: 10,top: 10),
                                                   decoration : AddProductDecoration(
-                                                      HexColor(HeroProduct.ProductColor[i]),
+                                                      HexColor.fromHex(HeroProduct.ProductColor[i]),
                                                       500, (selectedIndex == i)?DarkBlue:Blue
                                                   ),
                                                 ),
