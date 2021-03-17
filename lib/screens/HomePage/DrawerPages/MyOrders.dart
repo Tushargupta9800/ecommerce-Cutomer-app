@@ -1,7 +1,6 @@
 import 'package:customeremall/api/order/viewOrders.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
-import 'package:customeremall/screens/HomePage/DrawerPages/SubDrawerPages/editAddress.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class MyOrders extends StatefulWidget {
 
 class _MyOrdersState extends State<MyOrders> {
 
-  void CheckingAllOrders(){ViewAllOrders().then((value){setState(() {});});}
+  void CheckingAllOrders(){ViewAllOrders().then((value){if(this.mounted) setState(() {});});}
 
   @override
   void initState() {
@@ -96,8 +95,30 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Total",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
-                            Text("SR " + MyAllOrders[i].Amount,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
+                            Text("Price",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text("SR " + MyAllOrders[i].Amount.split(":")[1].split(",")[0].trim(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Delivery Charge",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text("SR " + MyAllOrders[i].Amount.split(":")[2].split(",")[0].trim(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Tax(15%)",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text("SR " + MyAllOrders[i].Amount.split(":")[3].split(",")[0].trim(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
                           ],
                         ),
                       ),
@@ -145,6 +166,7 @@ class _MyOrdersState extends State<MyOrders> {
                     ],
                   ),
                 ),
+              SizedBox(height: 20,),
             ],
           ),
         ),

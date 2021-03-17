@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/screens/HomePage/DrawerPages/SubDrawerPages/editAddress.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -11,12 +13,23 @@ class MyAddress extends StatefulWidget {
 
 class _MyAddressState extends State<MyAddress> {
 
+  Timer time;
+
   void readAllAddress(){readAddresses().then((value){setState(() {});});}
 
   @override
   void initState() {
+    time = new Timer.periodic(Duration(milliseconds: 1000), (Timer t) {setState(() {
+      print("here");
+    });});
     readAllAddress();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    time.cancel();
+    super.dispose();
   }
 
   @override
@@ -74,7 +87,7 @@ class _MyAddressState extends State<MyAddress> {
             child: Row(
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>
                         EditAddress(MyAllAddresses[i].Country,
                             MyAllAddresses[i].State,

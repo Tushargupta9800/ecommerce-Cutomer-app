@@ -272,9 +272,7 @@ class _EditAddressState extends State<EditAddress> {
                       writeAddresses().then((value){
                         readAddresses().then((value) {
                           ShowToast("Address Saved", context);
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
-                          Navigator.pushNamed(context, MyAddressRouteCode);
+                          Navigator.pop(context, "setTheState");
                         });
                       });
                     }

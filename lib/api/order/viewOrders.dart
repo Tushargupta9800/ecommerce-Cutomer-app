@@ -35,6 +35,7 @@ Future<bool> ViewAllOrders() async {
       ThisOrder.Quantity = order["Quantity"];
       ThisOrder.Date = order["Date"];
       ThisOrder.PaymentType = order["Payment_type"];
+      print(ThisOrder.Amount);
       ThisOrder.WhatsMyStatus();
       MyAllOrders.add(ThisOrder);
     }
