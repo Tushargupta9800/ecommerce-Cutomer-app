@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
     ProductImageList.add("assets/images/Products/Suits.jpg");
     ProductImageList.add("assets/images/Products/Toys.jpg");
     ProductImageList.add("assets/images/Products/Tshirts.jpg");
-    time = new Timer.periodic(Duration(milliseconds: 800), (Timer t) {setState(() {});});
+    time = new Timer.periodic(Duration(milliseconds: 5000), (Timer t) {setState(() {});});
     Shuffle();
     super.initState();
 
