@@ -1,3 +1,4 @@
+import 'package:customeremall/api/order/viewOrders.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -9,6 +10,13 @@ class MyOrders extends StatefulWidget {
 }
 
 class _MyOrdersState extends State<MyOrders> {
+
+  @override
+  void initState() {
+    ViewAllOrders();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
 

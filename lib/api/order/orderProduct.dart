@@ -4,7 +4,12 @@ import 'package:customeremall/api/secrets/secrets.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:http/http.dart' as http;
 
-Future<bool> OrderProduts(int index) async {
+Future<bool> OrderProduts(int index, double total, double deliveryFee, String IsIt) async {
+
+  print(MyCart[index].Id);
+  print(Customer.Mobile);
+  print(MyAllAddresses[ChoosenAddress].TotalAddress);
+
   var response = await http.post(
     Uri.parse(BuyProductsUrl),
     headers: {
@@ -17,13 +22,17 @@ Future<bool> OrderProduts(int index) async {
       "product_id": MyCart[index].Id,
       "mobile": Customer.Mobile,
       "address": MyAllAddresses[ChoosenAddress].TotalAddress,
-      "total_amount": MyCart[index].Price,
+      "total_amount": "Product Price: " + MyCart[index].Price +
+          ", DeliveryCharges: " + deliveryFee.toStringAsFixed(2) +
+          ", Tax: " + (0.15*double.parse(MyCart[index].Price)).toStringAsFixed(2) +
+          ", Total: " + total.toStringAsFixed(2) +
+          ", IsIt: "  + IsIt,
       "state": MyAllAddresses[ChoosenAddress].State,
       "country": MyAllAddresses[ChoosenAddress].State,
       "quantity": MyCart[index].Quantity,
-      "payment_type": "COD",
+      "payment_type": "Online Payment",
       "color": MyCart[index].Color,
-      "size": "size"
+      "size": MyCart[index].Size
     }),
   );
 

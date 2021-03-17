@@ -8,3 +8,4 @@ String SubCategoryUrl = DomainUrl + "/api/get/get/subcategory";
 
 String GetProductsUrl = DomainUrl + "/api/get/customizedquery";
 String BuyProductsUrl = DomainUrl + "/api/takeorder/orders";
+String ViewOrdersUrl = DomainUrl + "/api/vieworder/view/customer";

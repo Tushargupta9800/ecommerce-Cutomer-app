@@ -1,7 +1,10 @@
 import 'package:customeremall/Models/cartModel.dart';
+import 'package:customeremall/api/order/orderProduct.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
+import 'package:customeremall/screens/Splashscreen/OrderLoading.dart';
+import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +20,9 @@ class _CartPageState extends State<CartPage> {
   double SubTotal = 0.00;
   double DeliveryFee = 25.00;
   double tax = 0.00;
+  bool loading = false;
+  bool didOrderCompleted = true;
+  int orderIndex = 1;
 
   CalculatePrice(){
     setState(() {
@@ -267,8 +273,38 @@ class _CartPageState extends State<CartPage> {
                           SizedBox(height: 10,),
 
                           GestureDetector(
-                            onTap: (){
-                              setState(() {});
+                            onTap: () async {
+                              setState(() {
+                                loading = true;
+                              });
+                              if(MyCart.length > 0)
+                                for(int i=0;i<MyCart.length;i++){
+                                  setState(() {
+                                    orderIndex = i;
+                                  });
+                                  await OrderProduts(i,Total,DeliveryFee, (i==0)?"Yes":"No").then((value){
+                                    if(!value){
+                                      ShowToast("Please Check Your Network!!!", context);
+                                      setState(() {
+                                        didOrderCompleted = false;
+                                        loading = false;
+                                      });
+                                    }
+                                  });
+                                }
+                              if(didOrderCompleted){
+                                setState(() {
+                                  MyCart.clear();
+                                  writeCart().then((value){
+                                    readCart();
+                                  });
+                                });
+                                ShowToast("Order Send", context);
+                                Navigator.of(context).pop();
+                              }
+                              setState(() {
+                                loading = false;
+                              });
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -340,6 +376,9 @@ class _CartPageState extends State<CartPage> {
                 ),
               ),
 
+              (loading)?
+                  OrderLoading(((orderIndex*100)/MyCart.length).toStringAsFixed(1))
+                  :SizedBox(height: 0,),
 
             ],
           ),
@@ -493,7 +532,6 @@ class _CartPageState extends State<CartPage> {
                           ],
                         ),
                       ))
-
                 ],
               )
           )

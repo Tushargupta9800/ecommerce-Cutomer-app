@@ -13,7 +13,7 @@ class AddressModel{
         ", Landmark: " + Landmark  +
         ", Street: " + Street +
         ", Area: " + Area +
-        ", City" + City;
+        ", City: " + City;
   }
 
   Map<String, String>toJson() => {

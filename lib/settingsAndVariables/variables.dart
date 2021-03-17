@@ -1,4 +1,5 @@
 import 'package:customeremall/Models/AddressModel.dart';
+import 'package:customeremall/Models/MyOrdersModel.dart';
 import 'package:customeremall/Models/cartModel.dart';
 import 'package:customeremall/Models/productModel.dart';
 import 'package:customeremall/Models/userModel.dart';
@@ -43,6 +44,7 @@ int HeroIndex;
 productModel HeroProduct = productModel();
 List<CartModel> MyCart = [];
 List<AddressModel> MyAllAddresses = [];
+List<MyOrdersModel> MyAllOrders = [];
 int MyAddressPosition = 0;
 int ChoosenAddress = 0;
 
