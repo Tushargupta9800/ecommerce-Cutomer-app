@@ -21,7 +21,6 @@ Future<bool> AuthRegister() async {
   );
 
   Map<dynamic, dynamic> res = await jsonDecode(response.body.toString());
-  print(res);
   if(res["error"] == null){return true;}
   return false;
 
@@ -42,7 +41,6 @@ Future<bool> AuthLogin() async {
   );
 
   Map<dynamic, dynamic> res = jsonDecode(response.body.toString());
-  print(res);
   if(res["error"] == null){
     Customer.Token = res["token"];
     Customer.Address = res["info"]["Address"];

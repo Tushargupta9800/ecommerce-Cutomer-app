@@ -6,10 +6,6 @@ import 'package:http/http.dart' as http;
 
 Future<bool> OrderProduts(int index, double total, double deliveryFee, String IsIt) async {
 
-  print(MyCart[index].Id);
-  print(Customer.Mobile);
-  print(MyAllAddresses[ChoosenAddress].TotalAddress);
-
   var response = await http.post(
     Uri.parse(BuyProductsUrl),
     headers: {

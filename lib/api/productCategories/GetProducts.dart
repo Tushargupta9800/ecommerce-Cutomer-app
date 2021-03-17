@@ -9,8 +9,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 Future<List<productModel>> GetProductsByCategories(String category, String SubCategory,BuildContext context) async {
-  // print(category);
-  // print(SubCategory);
 
   var response = await http.post(
     Uri.parse(GetProductsUrl),
