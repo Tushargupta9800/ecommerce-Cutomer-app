@@ -3,6 +3,7 @@ import 'package:customeremall/api/order/orderProduct.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
+import 'package:customeremall/screens/HomePage/DrawerPages/SubDrawerPages/chooseAddress.dart';
 import 'package:customeremall/screens/Splashscreen/OrderLoading.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -43,6 +44,7 @@ class _CartPageState extends State<CartPage> {
   @override
   void initState() {
     CalculatePrice();
+    setState(() {CanWeOrderNow = false;});
     super.initState();
   }
 
@@ -274,37 +276,43 @@ class _CartPageState extends State<CartPage> {
 
                           GestureDetector(
                             onTap: () async {
-                              setState(() {
-                                loading = true;
-                              });
                               if(MyCart.length > 0)
-                                for(int i=0;i<MyCart.length;i++){
+                                if(!CanWeOrderNow)
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseAddress()));
+                                else {
                                   setState(() {
-                                    orderIndex = i;
+                                    loading = true;
                                   });
-                                  await OrderProduts(i,Total,DeliveryFee, (i==0)?"Yes":"No").then((value){
-                                    if(!value){
-                                      ShowToast("Please Check Your Network!!!", context);
+                                  if (MyCart.length > 0)
+                                    for (int i = 0; i < MyCart.length; i++) {
                                       setState(() {
-                                        didOrderCompleted = false;
-                                        loading = false;
+                                        orderIndex = i;
+                                      });
+                                      await OrderProduts(i, Total, DeliveryFee, (i == 0) ? "Yes" : "No")
+                                          .then((value) {
+                                        if (!value) {
+                                          ShowToast("Please Check Your Network!!!", context);
+                                          setState(() {
+                                            didOrderCompleted = false;
+                                            loading = false;
+                                          });
+                                        }
                                       });
                                     }
+                                  if (didOrderCompleted) {
+                                    setState(() {
+                                      MyCart.clear();
+                                      writeCart().then((value) {
+                                        readCart();
+                                      });
+                                    });
+                                    ShowToast("Order Send", context);
+                                    Navigator.of(context).pop();
+                                  }
+                                  setState(() {
+                                    loading = false;
                                   });
                                 }
-                              if(didOrderCompleted){
-                                setState(() {
-                                  MyCart.clear();
-                                  writeCart().then((value){
-                                    readCart();
-                                  });
-                                });
-                                ShowToast("Order Send", context);
-                                Navigator.of(context).pop();
-                              }
-                              setState(() {
-                                loading = false;
-                              });
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(horizontal: 20),

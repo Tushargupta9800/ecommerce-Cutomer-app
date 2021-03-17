@@ -54,83 +54,90 @@ class _MyAddressState extends State<MyAddress> {
             )
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 40,),
-          GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> EditAddress("","","","","","","",MyAllAddresses.length)));
-            },
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              height: 40,
-              width: ScreenWidth,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey)
-              ),
-              child: Center(
-                child: Text('+ New Location', style: TextStyle(
-                    color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold
-                ),),
-              ),
-            ),
-          ),
-
-          SizedBox(height: 30,),
-
-          for(int i=0;i<MyAllAddresses.length;i++)
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-            height: 40,
-            width: ScreenWidth,
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                        EditAddress(MyAllAddresses[i].Country,
-                            MyAllAddresses[i].State,
-                            MyAllAddresses[i].City,
-                            MyAllAddresses[i].Area,
-                            MyAllAddresses[i].Street,
-                            MyAllAddresses[i].Address,
-                            MyAllAddresses[i].Landmark,i
-                        )));
-                  },
-                  child: Container(
-                    width: ScreenWidth - 85,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey)
-                    ),
-                    child: Center(
-                      child: Text(MyAllAddresses[i].Address, style: TextStyle(
-                          color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold,
-                      ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ),
+      body: Container(
+        width: ScreenWidth,
+        height: ScreenHeight,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              SizedBox(height: 40,),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> EditAddress("","","","","","","",MyAllAddresses.length)));
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  height: 40,
+                  width: ScreenWidth,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.grey)
+                  ),
+                  child: Center(
+                    child: Text('+ New Location', style: TextStyle(
+                        color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold
+                    ),),
                   ),
                 ),
-                GestureDetector(
-                  onTap: (){
-                    MyAllAddresses.removeAt(i);
-                    writeAddresses().then((value){readAllAddress();});
-                  },
-                  child: Container(
-                    width: 35,
-                    height: 35,
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                      child: Center(child: Icon(Icons.delete))
-                  ),
+              ),
+
+              SizedBox(height: 30,),
+
+              for(int i=0;i<MyAllAddresses.length;i++)
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                height: 40,
+                width: ScreenWidth,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                            EditAddress(MyAllAddresses[i].Country,
+                                MyAllAddresses[i].State,
+                                MyAllAddresses[i].City,
+                                MyAllAddresses[i].Area,
+                                MyAllAddresses[i].Street,
+                                MyAllAddresses[i].Address,
+                                MyAllAddresses[i].Landmark,i
+                            )));
+                      },
+                      child: Container(
+                        width: ScreenWidth - 85,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.grey)
+                        ),
+                        child: Center(
+                          child: Text(MyAllAddresses[i].Address, style: TextStyle(
+                              color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold,
+                          ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        MyAllAddresses.removeAt(i);
+                        writeAddresses().then((value){readAllAddress();});
+                      },
+                      child: Container(
+                        width: 35,
+                        height: 35,
+                        margin: EdgeInsets.symmetric(horizontal: 5),
+                          child: Center(child: Icon(Icons.delete))
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

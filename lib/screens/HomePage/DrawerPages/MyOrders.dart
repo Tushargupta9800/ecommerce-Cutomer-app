@@ -46,7 +46,7 @@ class _MyOrdersState extends State<MyOrders> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              for(int i=0;i<MyAllOrders.length;i++)
+              for(int i=MyAllOrders.length-1;i>=0;i--)
                 Container(
                   margin: EdgeInsets.only(top: 20),
                   width: ScreenWidth,
