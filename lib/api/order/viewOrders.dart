@@ -39,7 +39,5 @@ Future<bool> ViewAllOrders() async {
     }
     return true;
   }
-
   return false;
-
 }
