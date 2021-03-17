@@ -19,6 +19,7 @@ Future<bool> ViewAllOrders() async {
 
   Map<dynamic, dynamic> res = await jsonDecode(response.body.toString());
 
+  MyAllOrders.clear();
   if(res["error"] == null){
     for(var order in res["data"]){
       MyOrdersModel ThisOrder = MyOrdersModel();
@@ -34,7 +35,7 @@ Future<bool> ViewAllOrders() async {
       ThisOrder.Quantity = order["Quantity"];
       ThisOrder.Date = order["Date"];
       ThisOrder.PaymentType = order["Payment_type"];
-      print(ThisOrder.Color);
+      ThisOrder.WhatsMyStatus();
       MyAllOrders.add(ThisOrder);
     }
     return true;

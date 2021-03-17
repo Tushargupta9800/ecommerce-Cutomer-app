@@ -11,4 +11,8 @@ class MyOrdersModel{
   String Color;
   String Size;
   String Date;
+  String Status;
+  void WhatsMyStatus(){
+    Status = (User_Payment)?"Completed":"Processing";
+  }
 }
