@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:badges/badges.dart';
 import 'package:customeremall/api/productCategories/categories.dart';
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   List<int> KidsListOfInt = [];
   Random random = new Random();
   bool loading = false;
+  Timer time;
 
   void Shuffle(){
 
@@ -43,6 +45,12 @@ class _HomePageState extends State<HomePage> {
     ListOfInt..shuffle();
     KidsListOfInt.addAll(ListOfInt);
   }
+
+  @override
+  void dispose() {
+    time.cancel();
+    super.dispose();
+  }
   
   @override
   void initState() {
@@ -53,6 +61,9 @@ class _HomePageState extends State<HomePage> {
     ProductImageList.add("assets/images/Products/Suits.jpg");
     ProductImageList.add("assets/images/Products/Toys.jpg");
     ProductImageList.add("assets/images/Products/Tshirts.jpg");
+    time = new Timer.periodic(Duration(milliseconds: 800), (Timer t) {
+      setState(() {});
+    });
     Shuffle();
     super.initState();
 

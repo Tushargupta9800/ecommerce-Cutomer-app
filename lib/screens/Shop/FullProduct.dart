@@ -419,6 +419,7 @@ class _FullProductState extends State<FullProduct> with TickerProviderStateMixin
                             ThisToCart.Id = HeroProduct.ProductId;
                             ThisToCart.Quantity = numberController.text;
                             ThisToCart.Color = HeroProduct.ProductColor[selectedIndex];
+                            ThisToCart.Size = HeroProduct.ProductSize[selectedIndex];
                             ThisToCart.Imagelist.addAll(HeroProduct.ProductPic);
                             ThisToCart.getImage();
                             MyCart.add(ThisToCart);

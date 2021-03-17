@@ -44,6 +44,7 @@ productModel HeroProduct = productModel();
 List<CartModel> MyCart = [];
 List<AddressModel> MyAllAddresses = [];
 int MyAddressPosition = 0;
+int ChoosenAddress = 0;
 
 String Whatsappnumber = "+966599018558";
 String Whatsappmsg = "Hello";

@@ -8,6 +8,7 @@ class CartModel{
   String Id;
   String Quantity;
   String Color;
+  String Size;
   MemoryImage image;
   List<int> Imagelist = [];
 
@@ -21,7 +22,8 @@ class CartModel{
     "Id": Id,
     "Quantity": Quantity,
     "Color": Color,
-    "Imagelist": Imagelist.toString()
+    "Imagelist": Imagelist.toString(),
+    "Size": Size
 };
 
 }

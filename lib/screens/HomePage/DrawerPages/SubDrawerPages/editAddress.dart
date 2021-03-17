@@ -64,9 +64,13 @@ class _EditAddressState extends State<EditAddress> {
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.white,
-          title: Text('Edit Address', style: TextStyle(
-              color: Colors.black
-          ),),
+          title:
+          // (widget.index == MyAllAddresses.length)?
+          // Text('Add Address', style: TextStyle(
+          //     color: Colors.black),):
+          Text('Edit Address', style: TextStyle(
+              color: Colors.black),
+          ),
           leading: GestureDetector(
             onTap: (){
               Navigator.of(context).pop();

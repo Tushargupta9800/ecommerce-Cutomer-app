@@ -37,6 +37,7 @@ Future<String> readCart() async {
       NewCart.Id = order["Id"];
       NewCart.Quantity = order["Quantity"];
       NewCart.Color = order["Color"];
+      NewCart.Size = order["Size"];
       NewCart.Imagelist.addAll(List.from(jsonDecode(order["Imagelist"])));
       NewCart.getImage();
       MyCart.add(NewCart);
