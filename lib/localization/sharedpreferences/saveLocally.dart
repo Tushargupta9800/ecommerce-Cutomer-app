@@ -51,7 +51,7 @@ Future<String> readCart() async {
 
 Future<File> writeAddresses() async {
   final file = await localFile("myAddressList");
-  return file.writeAsString(jsonEncode(MyCart));
+  return file.writeAsString(jsonEncode(MyAllAddresses));
 }
 
 Future<String> readAddresses() async {

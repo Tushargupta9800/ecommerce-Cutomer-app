@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:badges/badges.dart';
 import 'package:customeremall/screens/Shop/SubCategoryPage.dart';
 import 'package:customeremall/settingsAndVariables/routers/routecodes.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -68,9 +69,14 @@ class _CategoryPageState extends State<CategoryPage> with SingleTickerProviderSt
         ),),
         actions: [
           IconButton(icon: Icon(Icons.search, color: Colors.black,), onPressed: (){}),
-          IconButton(icon: Icon(Icons.shopping_cart, color: Colors.black,), onPressed: (){
-            Navigator.pushNamed(context, CartPageRouteCode);
-          }),
+          Badge(
+            badgeColor: Blue,
+            badgeContent: Text(MyCart.length.toString(),style: TextStyle(color: White),),
+            position: BadgePosition.topEnd(top: 5,end: 5),
+            child: IconButton(icon: Icon(Icons.shopping_cart, color: Colors.black,), onPressed: (){
+              Navigator.pushNamed(context, CartPageRouteCode);
+            }),
+          ),
         ],
         leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.black,), onPressed: (){
           Navigator.of(context).pop();

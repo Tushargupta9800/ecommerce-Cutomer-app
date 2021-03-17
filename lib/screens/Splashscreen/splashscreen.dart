@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:customeremall/api/Auth/auth.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/sharedpreferences/sharedpreferences.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
@@ -41,10 +42,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void logMeIn(){
-    print(email);
-    print(password);
     Customer.Email = email;
     Customer.Password = password;
+    readCart();
+    readAddresses();
     AuthLogin().then((value) {
       if(value){
         ShowToast(Translate(context, WelcomeCode), context);

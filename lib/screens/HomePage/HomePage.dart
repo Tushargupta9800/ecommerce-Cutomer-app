@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:badges/badges.dart';
 import 'package:customeremall/api/productCategories/categories.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
@@ -255,11 +256,16 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: White,
           iconTheme: IconThemeData(color: Black,),
           actions: [
-            IconButton(
-                icon: Icon(Icons.shopping_cart),
-                onPressed: (){
-                  Navigator.pushNamed(context, CartPageRouteCode);
-                }),
+            Badge(
+              badgeColor: Blue,
+              badgeContent: Text(MyCart.length.toString(),style: TextStyle(color: White),),
+              position: BadgePosition.topEnd(top: 5,end: 5),
+              child: IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: (){
+                    Navigator.pushNamed(context, CartPageRouteCode);
+                  }),
+            ),
             IconButton(icon: Icon(Icons.notification_important_rounded),
                 onPressed: (){})
           ],
