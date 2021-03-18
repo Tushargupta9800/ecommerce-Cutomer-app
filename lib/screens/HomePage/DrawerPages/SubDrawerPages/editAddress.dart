@@ -89,7 +89,7 @@ class _EditAddressState extends State<EditAddress> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(Translate(context, EditCountryCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),
@@ -113,7 +113,7 @@ class _EditAddressState extends State<EditAddress> {
                 SizedBox(height: 10,),
 
                 Text(Translate(context, EditStateCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),
@@ -135,7 +135,7 @@ class _EditAddressState extends State<EditAddress> {
                 SizedBox(height: 10,),
 
                 Text(Translate(context, EditCityCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),
@@ -157,7 +157,7 @@ class _EditAddressState extends State<EditAddress> {
                 SizedBox(height: 10,),
 
                 Text(Translate(context, EditAreaCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),
@@ -179,7 +179,7 @@ class _EditAddressState extends State<EditAddress> {
                 SizedBox(height: 10,),
 
                 Text(Translate(context, EditStreetCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),
@@ -201,7 +201,7 @@ class _EditAddressState extends State<EditAddress> {
                 SizedBox(height: 10,),
 
                 Text(Translate(context, EditAddressDetailsCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),
@@ -223,7 +223,7 @@ class _EditAddressState extends State<EditAddress> {
                 SizedBox(height: 10,),
 
                 Text(Translate(context, EditLandmarkCode), style: TextStyle(
-                    color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
+                    color: Colors.black, fontSize: 14,
                 ),),
 
                 SizedBox(height: 10,),

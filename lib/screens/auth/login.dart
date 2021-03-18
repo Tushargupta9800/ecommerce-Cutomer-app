@@ -145,6 +145,9 @@ class _LoginState extends State<Login> {
                         ),
                         child: TextButton(
                           onPressed: (){
+                            setState(() {
+                              loading = true;
+                            });
                             if(overallValidation()){
                               setState(() {
                                 Customer.Email = EmailController.text;
@@ -152,13 +155,21 @@ class _LoginState extends State<Login> {
                               });
                               AuthLogin().then((value) {
                                 if(value){
+                                  setState(() {
+                                    loading = false;
+                                  });
                                   ShowToast(Translate(context, WelcomeCode), context);
                                   incrementStartup();
                                   SetStringFromSharedPref("Email", Customer.Email);
                                   SetStringFromSharedPref("Password", Customer.Password);
                                   Navigator.popAndPushNamed(context, HomePageRouteCode);
                                 }
-                                else ShowToast(Translate(context, ErrorLoginCode), context);
+                                else{
+                                  setState(() {
+                                    loading = false;
+                                  });
+                                  ShowToast(Translate(context, ErrorLoginCode), context);
+                                }
                               });
                             }
                           },
@@ -193,7 +204,14 @@ class _LoginState extends State<Login> {
                 ],
               ),
 
-              (loading)?Container():SizedBox(height: 0,),
+              (loading)?Container(
+                width: ScreenWidth,
+                color: Colors.white,
+                height: ScreenHeight,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ):SizedBox(height: 0,),
 
             ],
           ),
