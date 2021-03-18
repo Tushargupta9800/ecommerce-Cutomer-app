@@ -44,7 +44,7 @@ class _ChooseAddressState extends State<ChooseAddress> {
                   child: Icon(Icons.done, color: DarkBlue,size: 35,),
                   onPressed: (){
                     setState(() {
-                      if(ChoosenAddress <= MyAllAddresses.length){
+                      if(ChoosenAddress <= MyAllAddresses.length && ChoosenAddress != -1){
                         CanWeOrderNow = true;
                         Navigator.of(context).pop();
                       }

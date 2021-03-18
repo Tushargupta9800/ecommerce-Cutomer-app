@@ -46,7 +46,7 @@ List<CartModel> MyCart = [];
 List<AddressModel> MyAllAddresses = [];
 List<MyOrdersModel> MyAllOrders = [];
 int MyAddressPosition = 0;
-int ChoosenAddress = 0;
+int ChoosenAddress = -1;
 bool CanWeOrderNow = false;
 
 String Whatsappnumber = "+966599018558";
