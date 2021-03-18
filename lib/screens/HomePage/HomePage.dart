@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:badges/badges.dart';
 import 'package:customeremall/api/productCategories/categories.dart';
+import 'package:customeremall/api/productCategories/deliveryCharges.dart';
 import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/localization/variables/languageCode.dart';
@@ -272,7 +273,21 @@ class _HomePageState extends State<HomePage> {
               child: IconButton(
                   icon: Icon(Icons.shopping_cart),
                   onPressed: (){
-                    Navigator.pushNamed(context, CartPageRouteCode);
+                    setState(() {
+                      loading = true;
+                    });
+                    getDeliveryCharges().then((value){
+                      if(value){
+                        setState(() {
+                          loading = false;
+                        });
+                        Navigator.pushNamed(context, CartPageRouteCode);
+                      }
+                      else ShowToast(Translate(context, ErrorCode), context);
+                      setState(() {
+                        loading = false;
+                      });
+                    });
                   }),
             ),
             IconButton(icon: Icon(Icons.notification_important_rounded),

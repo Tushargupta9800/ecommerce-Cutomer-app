@@ -10,4 +10,4 @@ String GetProductsUrl = DomainUrl + "/api/get/customizedquery";
 String BuyProductsUrl = DomainUrl + "/api/takeorder/orders";
 String ViewOrdersUrl = DomainUrl + "/api/vieworder/view/customer";
 
-String getDeliveryCharges = DomainUrl + "/api/adminpanel/retrivecharges";
+String getDeliveryChargesUrl = DomainUrl + "/api/adminpanel/retrivecharges";

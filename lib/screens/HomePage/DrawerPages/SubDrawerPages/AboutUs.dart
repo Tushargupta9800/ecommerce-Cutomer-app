@@ -33,7 +33,7 @@ class _AboutUsState extends State<AboutUs> {
           padding: EdgeInsets.only(top: 25),
           child: Column(
             children: [
-
+              Text("This is About us Page"),
             ],
           ),
         ),

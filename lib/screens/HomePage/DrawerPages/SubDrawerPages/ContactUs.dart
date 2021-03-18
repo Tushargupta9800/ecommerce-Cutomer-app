@@ -33,7 +33,9 @@ class _ContactUsState extends State<ContactUs> {
           padding: EdgeInsets.only(top: 25),
           child: Column(
             children: [
-
+              Text("Contact Us At"),
+              SizedBox(height: 10,),
+              Text(Whatsappnumber),
             ],
           ),
         ),

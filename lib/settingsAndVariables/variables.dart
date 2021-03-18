@@ -48,6 +48,7 @@ List<MyOrdersModel> MyAllOrders = [];
 int MyAddressPosition = 0;
 int ChoosenAddress = -1;
 bool CanWeOrderNow = false;
+double DeliveryFee = 00.00;
 
 String Whatsappnumber = "+966599018558";
 String Whatsappmsg = "Hello";

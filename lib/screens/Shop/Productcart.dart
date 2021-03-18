@@ -6,6 +6,7 @@ import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/screens/HomePage/DrawerPages/SubDrawerPages/chooseAddress.dart';
 import 'package:customeremall/screens/Splashscreen/OrderLoading.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
+import 'package:customeremall/settingsAndVariables/routers/routecodes.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,6 @@ class _CartPageState extends State<CartPage> {
 
   double Total = 0.00;
   double SubTotal = 0.00;
-  double DeliveryFee = 25.00;
   double tax = 0.00;
   bool loading = false;
   bool didOrderCompleted = true;
@@ -308,7 +308,9 @@ class _CartPageState extends State<CartPage> {
                                     });
                                     ShowToast(Translate(context, OrderSendCode), context);
                                     Navigator.of(context).pop();
+                                    Navigator.pushNamed(context, MyOrdersRouteCode);
                                   }
+                                  else ShowToast(Translate(context, ErrorCode), context);
                                   setState(() {
                                     loading = false;
                                   });
