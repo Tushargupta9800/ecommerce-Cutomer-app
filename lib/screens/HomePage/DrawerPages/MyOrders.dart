@@ -62,7 +62,7 @@ class _MyOrdersState extends State<MyOrders> {
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
                           children: [
-                            Text("Order " + "#",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                            Text(Translate(context, OrderCode) + " #",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                             Text(MyAllOrders[i].Order_Id,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),overflow: TextOverflow.ellipsis,),
                           ],
                         ),
@@ -73,7 +73,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Order Date",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text(Translate(context, OrderDateCode),style: TextStyle(color: Colors.grey[600],fontSize: 14),),
                             Text(MyAllOrders[i].Date.split("T")[0],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
                           ],
                         ),
@@ -84,7 +84,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Status",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text(Translate(context, StatusCode),style: TextStyle(color: Colors.grey[600],fontSize: 14),),
                             Text(MyAllOrders[i].Status,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
                           ],
                         ),
@@ -95,7 +95,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Price",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text(Translate(context, PriceCode),style: TextStyle(color: Colors.grey[600],fontSize: 14),),
                             Text("SR " + MyAllOrders[i].Amount.split(":")[1].split(",")[0].trim(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
                           ],
                         ),
@@ -106,7 +106,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Delivery Charge",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text(Translate(context, DeliveryFeeCode),style: TextStyle(color: Colors.grey[600],fontSize: 14),),
                             Text("SR " + MyAllOrders[i].Amount.split(":")[2].split(",")[0].trim(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
                           ],
                         ),
@@ -117,7 +117,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Tax(15%)",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text(Translate(context, TaxCode),style: TextStyle(color: Colors.grey[600],fontSize: 14),),
                             Text("SR " + MyAllOrders[i].Amount.split(":")[3].split(",")[0].trim(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
                           ],
                         ),
@@ -128,7 +128,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Address",style: TextStyle(color: Colors.grey[600],fontSize: 14),),
+                            Text(Translate(context, AddressEditCode),style: TextStyle(color: Colors.grey[600],fontSize: 14),),
                             Container(
                                 width: 150,
                                 child: Row(
@@ -144,13 +144,13 @@ class _MyOrdersState extends State<MyOrders> {
                         ),
                       ),
                       SizedBox(height: 15,),
-                      (MyAllOrders[i].Status == "Processing")?Container(
+                      (MyAllOrders[i].Status == Translate(context, ProcessingCode))?Container(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Expected Day of Delivery",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Within Two Days of Order",style: TextStyle(fontSize: 14,color: Colors.red)),
+                            Text(Translate(context, ExpectedDateDeliveryCode),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text(Translate(context, WithinTwoDaysCode),style: TextStyle(fontSize: 14,color: Colors.red)),
                           ],
                         ),
                       ):Container(
@@ -158,7 +158,7 @@ class _MyOrdersState extends State<MyOrders> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Order Completed",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text(Translate(context, OrderCompletedCode),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
                           ],
                         ),
                       ),

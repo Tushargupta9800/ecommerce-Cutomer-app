@@ -503,7 +503,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(width: 1,),
-                    Text("Help And Support",style: TextStyle(
+                    Text(Translate(context, HelpNSupportCode),style: TextStyle(
                       fontWeight: FontWeight.bold, fontSize: H5
                     ),),
                     GestureDetector(
@@ -536,7 +536,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       SizedBox(width: 8,),
-                      Text("Call",style: TextStyle( fontSize: H5
+                      Text(Translate(context, CallCode),style: TextStyle( fontSize: H5
                       ),),
                     ],
                   ),
@@ -559,7 +559,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       SizedBox(width: 8,),
-                      Text("Message",style: TextStyle( fontSize: H5
+                      Text(Translate(context, MessageCode),style: TextStyle( fontSize: H5
                       ),),
                     ],
                   ),

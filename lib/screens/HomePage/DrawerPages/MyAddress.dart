@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
 import 'package:customeremall/screens/HomePage/DrawerPages/SubDrawerPages/editAddress.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
+import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +21,7 @@ class _MyAddressState extends State<MyAddress> {
 
   @override
   void initState() {
-    time = new Timer.periodic(Duration(milliseconds: 1000), (Timer t) {setState(() {
-      print("here");
-    });});
+    time = new Timer.periodic(Duration(milliseconds: 1000), (Timer t) {setState(() {});});
     readAllAddress();
     super.initState();
   }
@@ -41,7 +41,7 @@ class _MyAddressState extends State<MyAddress> {
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text('My Address', style: TextStyle(
+        title: Text(Translate(context, MyAddressCode), style: TextStyle(
             color: Colors.black
         ),),
         leading: GestureDetector(
@@ -75,7 +75,7 @@ class _MyAddressState extends State<MyAddress> {
                       border: Border.all(color: Colors.grey)
                   ),
                   child: Center(
-                    child: Text('+ New Location', style: TextStyle(
+                    child: Text(Translate(context, NewAddressCode), style: TextStyle(
                         color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold
                     ),),
                   ),

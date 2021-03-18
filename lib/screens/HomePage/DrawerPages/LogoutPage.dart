@@ -16,6 +16,7 @@ class _LogoutPageState extends State<LogoutPage> {
   @override
   void initState() {
     MyCart.clear();
+    MyAllAddresses.clear();
     writeCart();
     SetStringFromSharedPref("Email", "@#");
     SetStringFromSharedPref("Password", "@#");

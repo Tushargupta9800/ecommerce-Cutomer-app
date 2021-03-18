@@ -1,5 +1,6 @@
 import 'dart:async';
-
+import 'package:customeremall/localization/code/language_constraints.dart';
+import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/screens/HomePage/DrawerPages/SubDrawerPages/editAddress.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
@@ -35,7 +36,7 @@ class _ChooseAddressState extends State<ChooseAddress> {
             centerTitle: true,
             elevation: 0,
             backgroundColor: Colors.white,
-            title: Text('Choose Address', style: TextStyle(
+            title: Text(Translate(context, ChooseAddressCode), style: TextStyle(
                 color: Colors.black),
             ),
             actions: [
@@ -47,7 +48,7 @@ class _ChooseAddressState extends State<ChooseAddress> {
                         CanWeOrderNow = true;
                         Navigator.of(context).pop();
                       }
-                      else ShowToast("Select the address first", context);
+                      else ShowToast(Translate(context, SelectAddressCode), context);
                     });
                   }),
             ],
@@ -80,7 +81,7 @@ class _ChooseAddressState extends State<ChooseAddress> {
                         border: Border.all(color: Colors.grey)
                     ),
                     child: Center(
-                      child: Text('+ New Location', style: TextStyle(
+                      child: Text(Translate(context, NewAddressCode), style: TextStyle(
                           color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold
                       ),),
                     ),

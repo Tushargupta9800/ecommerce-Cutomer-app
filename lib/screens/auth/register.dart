@@ -246,9 +246,6 @@ class _RegisterState extends State<Register> {
                             });
                           }
                         },
-                        // shape: RoundedRectangleBorder(
-                        //   borderRadius: BorderRadius.circular(6),
-                        // ),
                         child: Container(
                           alignment: Alignment.center,
                           constraints: BoxConstraints(minHeight: 50,maxWidth: double.infinity),

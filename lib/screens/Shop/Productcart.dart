@@ -291,7 +291,7 @@ class _CartPageState extends State<CartPage> {
                                       await OrderProduts(i, Total, DeliveryFee, (i == 0) ? "Yes" : "No")
                                           .then((value) {
                                         if (!value) {
-                                          ShowToast("Please Check Your Network!!!", context);
+                                          ShowToast(Translate(context, CheckNetworkCode), context);
                                           setState(() {
                                             didOrderCompleted = false;
                                             loading = false;
@@ -306,7 +306,7 @@ class _CartPageState extends State<CartPage> {
                                         readCart();
                                       });
                                     });
-                                    ShowToast("Order Send", context);
+                                    ShowToast(Translate(context, OrderSendCode), context);
                                     Navigator.of(context).pop();
                                   }
                                   setState(() {
@@ -385,7 +385,7 @@ class _CartPageState extends State<CartPage> {
               ),
 
               (loading)?
-                  OrderLoading(((orderIndex*100)/MyCart.length).toStringAsFixed(1))
+                  OrderLoading(((orderIndex*100)/MyCart.length).toStringAsFixed(1),context)
                   :SizedBox(height: 0,),
 
             ],

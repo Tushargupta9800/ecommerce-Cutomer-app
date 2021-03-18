@@ -1,7 +1,8 @@
 import 'package:customeremall/Models/AddressModel.dart';
+import 'package:customeremall/localization/code/language_constraints.dart';
 import 'package:customeremall/localization/sharedpreferences/saveLocally.dart';
+import 'package:customeremall/localization/variables/languageCode.dart';
 import 'package:customeremall/settingsAndVariables/Toast/Toast.dart';
-import 'package:customeremall/settingsAndVariables/routers/routecodes.dart';
 import 'package:customeremall/settingsAndVariables/variables.dart';
 import 'package:flutter/material.dart';
 
@@ -65,10 +66,7 @@ class _EditAddressState extends State<EditAddress> {
           elevation: 0,
           backgroundColor: Colors.white,
           title:
-          // (widget.index == MyAllAddresses.length)?
-          // Text('Add Address', style: TextStyle(
-          //     color: Colors.black),):
-          Text('Edit Address', style: TextStyle(
+          Text(Translate(context,EditAddressCode), style: TextStyle(
               color: Colors.black),
           ),
           leading: GestureDetector(
@@ -90,7 +88,7 @@ class _EditAddressState extends State<EditAddress> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('*Country', style: TextStyle(
+                Text(Translate(context, EditCountryCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -114,7 +112,7 @@ class _EditAddressState extends State<EditAddress> {
                 ),
                 SizedBox(height: 10,),
 
-                Text('*State/Province', style: TextStyle(
+                Text(Translate(context, EditStateCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -136,7 +134,7 @@ class _EditAddressState extends State<EditAddress> {
                 ),
                 SizedBox(height: 10,),
 
-                Text('*City', style: TextStyle(
+                Text(Translate(context, EditCityCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -158,7 +156,7 @@ class _EditAddressState extends State<EditAddress> {
                 ),
                 SizedBox(height: 10,),
 
-                Text('*Area', style: TextStyle(
+                Text(Translate(context, EditAreaCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -180,7 +178,7 @@ class _EditAddressState extends State<EditAddress> {
                 ),
                 SizedBox(height: 10,),
 
-                Text('*Street', style: TextStyle(
+                Text(Translate(context, EditStreetCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -202,7 +200,7 @@ class _EditAddressState extends State<EditAddress> {
                 ),
                 SizedBox(height: 10,),
 
-                Text('*Address Details', style: TextStyle(
+                Text(Translate(context, EditAddressDetailsCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -224,7 +222,7 @@ class _EditAddressState extends State<EditAddress> {
                 ),
                 SizedBox(height: 10,),
 
-                Text('*Landmark', style: TextStyle(
+                Text(Translate(context, EditLandmarkCode), style: TextStyle(
                     color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold
                 ),),
 
@@ -271,12 +269,12 @@ class _EditAddressState extends State<EditAddress> {
                       }
                       writeAddresses().then((value){
                         readAddresses().then((value) {
-                          ShowToast("Address Saved", context);
+                          ShowToast(Translate(context, AddressSavedCode), context);
                           Navigator.pop(context, "setTheState");
                         });
                       });
                     }
-                    else ShowToast("Please, fill up the form first.", context);
+                    else ShowToast(Translate(context, FillTheFormCode), context);
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -287,7 +285,7 @@ class _EditAddressState extends State<EditAddress> {
                         borderRadius: BorderRadius.circular(15)
                     ),
                     child: Center(
-                      child: Text("Save",style: TextStyle(color: Colors.white,
+                      child: Text(Translate(context, SaveCode),style: TextStyle(color: Colors.white,
                           fontWeight: FontWeight.bold, fontSize: 20),textAlign: TextAlign.center,),
                     ),
                   ),
