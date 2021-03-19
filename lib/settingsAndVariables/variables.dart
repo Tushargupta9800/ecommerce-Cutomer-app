@@ -51,4 +51,4 @@ bool CanWeOrderNow = false;
 double DeliveryFee = 00.00;
 
 String Whatsappnumber = "+966599018558";
-String Whatsappmsg = "Hello";
+String Whatsappmsg = "Hello, This is " + Customer.Name  + ", with Id "+ Customer.Token;
